@@ -14,6 +14,10 @@ function [t,x]=mrk3(f,intervalo,x0,N)
 % t: vector columna de abscisas donde se va a aproximar la solución de tipo (N+1,1)
 % x: matriz de ordenadas de la solución aproximada de tipo (N+1,n)
 
+% Mejor inicializar para que te saque columnas:
+x=zeros(N+1,size(x0,2));
+t=zeros(N+1,1);
+
 x(1,:)=x0;
 t(1)=intervalo(1);
 h=(intervalo(2)-intervalo(1))/N;

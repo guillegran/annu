@@ -1,27 +1,22 @@
-if size(x,2)==1
-    % Caso escalar
-    figure(1)
-    plot(t,x,'r')
-elseif size(x,2)==2
-    % Caso vectorial
-    figure(1)
-    subplot(2,1,1)
-    plot(t,x(:,1),'r')
-    subplot(2,1,2)
-    plot(t,x(:,2),'g')
-    figure(2)
-    plot(x(:,1),x(:,2),'r')
-elseif size(x,2)==3
-    % Caso vectorial
-    figure(1)
-    subplot(3,1,1)
-    plot(t,x(:,1),'r')
-    subplot(3,1,2)
-    plot(t,x(:,2),'g')
-    subplot(3,1,3)
-    plot(t,x(:,3),'b')
-    figure(2)
-    plot3(x(:,1),x(:,2),x(:,3),'r')
-else
-    disp('No sé pintar en dimensiones superiores')
+% El script de gráficas del profesor
+colx=size(x,2); % Numero de columnas de la matriz x
+color=['r' 'g' 'b'];
+figure(1)
+for i=1:colx 
+  subplot(colx,1,i)
+  plot(t,x(:,i),color(i))
+  s=sprintf('Coordenada %d de la solución',i);
+  title(s)
+end
+if colx>1
+  pause(3) 
+  figure(2)
+  if colx==2
+      plot(x(:,1),x(:,2),'r')
+      %comet(x(:,1),x(:,2))
+  else
+      %plot3(x(:,1),x(:,2),x(:,3),'r')
+      comet3(x(:,1),x(:,2),x(:,3))
+  end
+title('Trayectoria de la solución')
 end

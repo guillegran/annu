@@ -2,9 +2,9 @@ mu=50;
 N1=24; N2=26; N3=50; 
 x0=0; intervalo=[0,1];
 
-x1=meulerexp(intervalo,x0,N1,mu);
-x2=meulerexp(intervalo,x0,N2,mu);
-x3=meulerexp(intervalo,x0,N3,mu);
+x1=meulerimp(intervalo,x0,N1,mu);
+x2=meulerimp(intervalo,x0,N2,mu);
+x3=meulerimp(intervalo,x0,N3,mu);
 
 t0=linspace(intervalo(1),intervalo(2),101);
 
@@ -35,7 +35,9 @@ plot(t0,x_exacta)
 s=sprintf('Solución exacta (N=100)');
 title(s)
 
-function [t,x]=meulerexp(intervalo,x0,N,mu)
+function [t,x]=meulerimp(intervalo,x0,N,mu)
+% Esta función resuelve el PVI por el método de Euler implícito.
+% Como la función es lineal, se puede despejar x(i+1).
 	h=(intervalo(2)-intervalo(1))/N;
 	t=linspace(intervalo(1),intervalo(2),N+1);
 	t=t(:);
